@@ -13,8 +13,7 @@ const WithErrorHandler = (WrappedComponent, axios) => {
       });
     };
     componentWillMount() {
-      this.resInterceptor = axios.interceptors.response.use(null, error => {
-        debugger;
+      this.resInterceptor = axios.interceptors.response.use(null, error => { 
         this.setState({
           error: error
         });

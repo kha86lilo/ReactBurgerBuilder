@@ -3,9 +3,9 @@ import classes from "./NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
 const NavigationItems = () => {
   return (
-    <ul className={classes.NavigationItems}>
+    <ul className={classes.NavigationItems}> 
       <NavigationItem link="/">Burger Builder </NavigationItem>
-      <NavigationItem link="/">Checkout</NavigationItem>
+      <NavigationItem  link="/Orders">Checkout</NavigationItem>
     </ul>
   );
 };

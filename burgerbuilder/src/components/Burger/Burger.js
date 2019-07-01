@@ -3,6 +3,7 @@ import classes from "./Burger.module.css";
 import BurgerIngredients from "./BurgerIngredients/BurgerIngredients";
 
 const Burger = props => {
+  
   let tIngredients = Object.keys(props.ingredients)
     .map(igkey => {
       let arr = [];
@@ -13,7 +14,7 @@ const Burger = props => {
     })
     .reduce((arr, elm) => {
       return [...arr, ...elm];
-    });
+    },[]);
   if (tIngredients.length === 0) {
     tIngredients = "Please start adding ingredients";
   }
