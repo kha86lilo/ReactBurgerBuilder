@@ -118,5 +118,5 @@ const mapDispatchToProps = dispatch => {
     onIngredientRemoved: (ingName) => dispatch({ type: actionTypes.REMOVE_INGREDIENT, ingredientName : ingName })
   };
 };
-
+ 
 export default connect(mapStateToProps,mapDispatchToProps)( WithErrorHandler(BurgerBuilder, axios));
