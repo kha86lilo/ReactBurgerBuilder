@@ -1,4 +1,4 @@
-import * as actionTypes from "./actions";
+import * as actionTypes from "../actions/actionTypes";
 
 const INGREDIENTS_PRICES = {
   salad: 0.5,
@@ -14,13 +14,28 @@ const initialState = {
     meat: 0
   },
   totalPrice: 4,
-  purchasable: false
+  purchasable: false,
+  isBuilding : false
 };
 
 const reducer = (state = initialState, action) => {
   const priceAddition = INGREDIENTS_PRICES[action.ingredientName];
   let updatedIngredients;
   switch (action.type) {
+    case actionTypes.FETCH_INGREDIENT_FAILED: 
+      return {
+        ...state,
+       error : true
+      };
+      
+    case actionTypes.SET_INGREDIENT: 
+    return {
+      ...state,
+      ingredients : action.ingredients,
+      isBuilding : false,
+      totalPrice: 4
+
+    };
     case actionTypes.ADD_INGREDIENT:
       updatedIngredients = {
         ...state.ingredients,
@@ -29,12 +44,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         ingredients: updatedIngredients,
+        isBuilding : true,
         totalPrice: state.totalPrice + priceAddition,
         purchasable: isPurchasable(updatedIngredients)
       };
     case actionTypes.REMOVE_INGREDIENT:
       updatedIngredients = {
         ...state.ingredients,
+        isBuilding : true,
         [action.ingredientName]: state.ingredients[action.ingredientName] - 1
       };
       return {
